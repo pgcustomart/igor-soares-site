@@ -53,10 +53,11 @@
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--color-white);
   line-height: 1;
   display: flex;
   flex-direction: column;
+  transition: color var(--duration-medium) var(--ease);
 }
 
 .site-header__wordmark span {
@@ -65,7 +66,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-wine);
+  color: var(--color-gold);
   margin-top: 0.3rem;
 }
 
@@ -87,7 +88,7 @@
   .site-nav a {
     font-size: 0.92rem;
     font-weight: 500;
-    color: var(--color-ink-soft);
+    color: rgba(255, 255, 255, 0.82);
     position: relative;
     padding-bottom: 4px;
     transition: color var(--duration-fast) var(--ease);
@@ -100,12 +101,12 @@
     right: 100%;
     bottom: 0;
     height: 1px;
-    background: var(--color-wine);
+    background: var(--color-gold);
     transition: right var(--duration-medium) var(--ease);
   }
 
   .site-nav a:hover {
-    color: var(--color-ink);
+    color: var(--color-white);
   }
 
   .site-nav a:hover::after {
@@ -114,6 +115,24 @@
 
   .site-header__cta {
     display: inline-flex;
+  }
+}
+
+.site-header.is-scrolled .site-header__wordmark {
+  color: var(--color-ink);
+}
+
+@media (min-width: 960px) {
+  .site-header.is-scrolled .site-nav a {
+    color: var(--color-ink-soft);
+  }
+
+  .site-header.is-scrolled .site-nav a::after {
+    background: var(--color-wine);
+  }
+
+  .site-header.is-scrolled .site-nav a:hover {
+    color: var(--color-ink);
   }
 }
 
@@ -133,8 +152,14 @@
   display: block;
   width: 22px;
   height: 1.5px;
+  background: var(--color-white);
+  transition: transform var(--duration-fast) var(--ease), opacity var(--duration-fast) var(--ease),
+    background var(--duration-medium) var(--ease);
+}
+
+.site-header.is-scrolled .nav-toggle span,
+.site-header.menu-open .nav-toggle span {
   background: var(--color-ink);
-  transition: transform var(--duration-fast) var(--ease), opacity var(--duration-fast) var(--ease);
 }
 
 .nav-toggle[aria-expanded='true'] span:nth-child(1) {

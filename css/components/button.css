@@ -61,6 +61,17 @@
   color: var(--color-gold);
 }
 
+.btn--outline-gold {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-gold);
+}
+
+.btn--outline-gold:hover {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
 .btn--lg {
   padding: 1.2rem 2.4rem;
   font-size: var(--fs-body);
