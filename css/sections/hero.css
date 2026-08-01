@@ -1,35 +1,51 @@
-/* Hero — primeira impressão: uma ideia, muito espaço, tipografia grande */
+/* Hero — tela de abertura em tela cheia: texto à esquerda, fotografia editorial em protagonismo à direita */
 
 .hero {
-  min-height: calc(100svh - var(--header-height));
-  display: flex;
-  align-items: center;
-  padding-block: var(--space-section-sm);
-  background:
-    radial-gradient(circle at 12% 18%, var(--color-gold-faint), transparent 45%),
-    var(--color-white);
-}
-
-.hero__grid {
   display: grid;
-  gap: var(--space-xl);
-  align-items: center;
   grid-template-columns: 1fr;
+  min-height: calc(100svh - var(--header-height));
 }
 
 @media (min-width: 900px) {
-  .hero__grid {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: var(--space-lg);
+  .hero {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.hero__content-col {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-xl) var(--space-lg);
+  background:
+    radial-gradient(circle at 15% 12%, var(--color-gold-faint), transparent 48%),
+    radial-gradient(circle at 85% 92%, var(--color-wine-soft), transparent 42%),
+    var(--color-white);
+}
+
+@media (min-width: 900px) {
+  .hero__content-col {
+    order: 1;
   }
 }
 
 .hero__content {
-  max-width: 620px;
+  max-width: 640px;
+}
+
+.hero__content .eyebrow {
+  margin-bottom: var(--space-sm);
 }
 
 .hero h1 {
+  font-size: clamp(2.75rem, 2rem + 2.8vw, 4.5rem);
   margin-bottom: var(--space-md);
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-wine);
 }
 
 .hero__lead {
@@ -71,16 +87,31 @@
 
 .hero__media {
   position: relative;
+  overflow: hidden;
+  min-height: 56vh;
 }
 
-.hero__media .media-frame {
-  aspect-ratio: 4 / 5;
-  max-width: 480px;
-  margin-inline: auto;
-}
-
-@media (max-width: 899px) {
-  .hero__media .media-frame {
-    max-width: 360px;
+@media (min-width: 900px) {
+  .hero__media {
+    order: 2;
+    min-height: 0;
   }
+}
+
+.hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 22% 50%;
+  display: block;
+}
+
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }

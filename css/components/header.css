@@ -38,6 +38,18 @@
 }
 
 .site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.site-header__mark {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.site-header__wordmark {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 600;
@@ -47,7 +59,7 @@
   flex-direction: column;
 }
 
-.site-header__logo span {
+.site-header__wordmark span {
   font-family: var(--font-sans);
   font-size: 0.62rem;
   font-weight: 600;

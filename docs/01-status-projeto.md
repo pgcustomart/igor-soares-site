@@ -41,7 +41,9 @@ Auditoria estática feita hoje (sem navegador) confirmou integridade estrutural:
 
 | Item | Onde | Valor atual |
 |---|---|---|
-| Fotografia do Igor | Hero, Sobre, cards de Artigos | `.media-frame` com monograma "IS" (gradiente + traço dourado) |
+| Fotografia do Igor | Cards de Artigos | `.media-frame` com monograma "IS" (gradiente + traço dourado). Sobre já usa fotografia real (`assets/images/sobre/igor-soares.jpg`). |
+| Imagem da Hero | Hero | Por decisão explícita do cliente, usa `assets/images/hero/hero-igor.webp` — uma imagem editorial/decorativa (estátua da Justiça em dourado, banco de imagens), não um retrato do Igor. Diverge da recomendação em `docs/00-arquitetura-e-estrategia.md` de evitar iconografia jurídica de banco de imagens; mantido a pedido do cliente após aviso explícito. |
+| Logo | Header, Footer | `assets/images/logo/logo-mark.svg` — monograma "IS" derivado de `C:\Users\PG\Desktop\logos igor soares\Logo_Igor_Soares_Vetor.svg` (recortado e adaptado para uso compacto). O arquivo `logo igor.jpeg` (brasão com espada/balança) não foi usado por ser iconografia jurídica de banco de imagens. |
 | Número de WhatsApp | `data-whatsapp` no `<body>` de `index.html` | `5521900000000` |
 | Telefone | Seção Contato, Footer | `(21) 00000-0000` |
 | E-mail | Seção Contato, Footer | `contato@igorsoares.adv.br` (formato definido, não confirmado como real) |
@@ -61,7 +63,7 @@ Todos esses pontos estão marcados com `<!-- TODO: ... -->` no código-fonte ou 
 2. Número da OAB.
 3. Telefone e e-mail oficiais.
 4. Complemento do endereço (sala/andar) em Estrada dos Bandeirantes, 7000.
-5. Fotografia profissional (editorial) do Igor.
+5. ~~Fotografia profissional (editorial) do Igor.~~ Resolvido para Hero/Sobre; ainda falta para os cards de Artigos.
 6. Depoimentos reais de clientes, com autorização.
 7. Aprovação da tagline.
 8. Confirmação/ajuste dos temas dos 3 primeiros artigos.
