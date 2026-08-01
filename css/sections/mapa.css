@@ -1,7 +1,6 @@
 /*
-  Mapa — seção premium de localização. O mapa nunca aparece sozinho:
-  ele é composto com um card de endereço/horário/ações que se sobrepõe
-  sutilmente à imagem, criando uma composição editorial (não um iframe cru).
+  Mapa — seção premium de localização. Mapa e card lado a lado, mesma altura,
+  sem sobreposição — composição limpa em vez de um iframe cru.
 */
 
 .mapa__layout {
@@ -12,8 +11,9 @@
 
 @media (min-width: 900px) {
   .mapa__layout {
-    grid-template-columns: 7fr 3fr;
-    gap: 0;
+    grid-template-columns: 3fr 1fr;
+    align-items: stretch;
+    gap: var(--space-md);
   }
 }
 
@@ -35,10 +35,10 @@
 
 .mapa__frame iframe {
   position: absolute;
-  top: -120px;
+  top: -150px;
   left: 0;
   width: 100%;
-  height: calc(100% + 120px);
+  height: calc(100% + 150px);
   border: 0;
   filter: grayscale(1) contrast(1.05) brightness(1.01);
   transition: filter var(--duration-slow) var(--ease);
@@ -50,21 +50,14 @@
 }
 
 .mapa__card {
-  position: relative;
-  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 20px;
   box-shadow: var(--shadow-card);
   padding: var(--space-lg);
-  align-self: center;
-}
-
-@media (min-width: 900px) {
-  .mapa__card {
-    margin: 0 0 0 -56px;
-    max-width: 380px;
-  }
 }
 
 .mapa__card h3 {
