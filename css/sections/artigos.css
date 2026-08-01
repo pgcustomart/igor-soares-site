@@ -1,7 +1,9 @@
 /*
   Artigos — vitrine editorial preparada para crescer (ver roadmap Fase 5+).
-  Site é one-page sem páginas internas: os cards não linkam para lugar
-  nenhum ainda, por isso trazem um selo "Em breve" em vez de um CTA morto.
+  Os cards trazem um link "Ler artigo" com href="#" por decisão explícita do
+  cliente — as páginas de artigo ainda não existem (site é one-page); os
+  hrefs devem ser substituídos pelos links reais assim que as páginas forem
+  publicadas.
 */
 
 .article-card {
@@ -10,30 +12,46 @@
   height: 100%;
 }
 
-.article-card .media-frame {
+.article-card__image {
   aspect-ratio: 16 / 10;
-  margin-bottom: var(--space-md);
+  margin: calc(var(--space-lg) * -1) calc(var(--space-md) * -1) var(--space-md);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
 }
 
-.article-card__tag {
+.article-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-card__link {
   display: inline-flex;
+  align-items: center;
   align-self: flex-start;
   margin-top: auto;
   padding-top: var(--space-md);
-  font-size: 0.75rem;
+  font-size: var(--fs-small);
   font-weight: 600;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-ink-faint);
+  color: var(--color-wine);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease);
 }
 
-.article-card__tag::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-gold);
+.article-card__link::before {
+  content: '\2192';
   margin-right: var(--space-2xs);
-  align-self: center;
+  transition: margin-right var(--duration-fast) var(--ease);
+}
+
+.article-card__link:hover,
+.article-card__link:focus-visible {
+  color: var(--color-wine-dark);
+}
+
+.article-card__link:hover::before,
+.article-card__link:focus-visible::before {
+  margin-right: var(--space-xs);
 }

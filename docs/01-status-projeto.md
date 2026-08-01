@@ -44,8 +44,6 @@ Auditoria estática feita hoje (sem navegador) confirmou integridade estrutural:
 | Fotografia do Igor | Cards de Artigos | `.media-frame` com monograma "IS" (gradiente + traço dourado). Sobre já usa fotografia real (`assets/images/sobre/igor-soares.jpg`). |
 | Imagem da Hero | Hero | Por decisão explícita do cliente, usa `assets/images/hero/hero-igor.webp` — uma imagem editorial/decorativa (estátua da Justiça em dourado, banco de imagens), não um retrato do Igor. Diverge da recomendação em `docs/00-arquitetura-e-estrategia.md` de evitar iconografia jurídica de banco de imagens; mantido a pedido do cliente após aviso explícito. |
 | Logo | Header, Footer | `assets/images/logo/logo-mark.svg` — monograma "IS" derivado de `C:\Users\PG\Desktop\logos igor soares\Logo_Igor_Soares_Vetor.svg` (recortado e adaptado para uso compacto). O arquivo `logo igor.jpeg` (brasão com espada/balança) não foi usado por ser iconografia jurídica de banco de imagens. |
-| Número de WhatsApp | `data-whatsapp` no `<body>` de `index.html` | `5521900000000` |
-| Telefone | Seção Contato, Footer | `(21) 00000-0000` |
 | E-mail | Seção Contato, Footer | `contato@igorsoares.adv.br` (formato definido, não confirmado como real) |
 | OAB | Footer | `OAB/RJ nº 000.000 — a confirmar` |
 | Complemento do endereço | Seção Mapa | Só "Estrada dos Bandeirantes, 7000" — sem sala/bloco |
@@ -61,7 +59,7 @@ Todos esses pontos estão marcados com `<!-- TODO: ... -->` no código-fonte ou 
 
 1. Anos de atuação do Igor em Direito do Trabalho (ou decisão consciente de omitir).
 2. Número da OAB.
-3. Telefone e e-mail oficiais.
+3. ~~Telefone/WhatsApp oficial.~~ Resolvido: `(21) 99404-5454` — usado como número de WhatsApp (`data-whatsapp`) e como telefone (`tel:`, JSON-LD `telephone`) em todo o site. E-mail ainda pendente de confirmação.
 4. Complemento do endereço (sala/andar) em Estrada dos Bandeirantes, 7000.
 5. ~~Fotografia profissional (editorial) do Igor.~~ Resolvido para Hero/Sobre; ainda falta para os cards de Artigos.
 6. Depoimentos reais de clientes, com autorização.
