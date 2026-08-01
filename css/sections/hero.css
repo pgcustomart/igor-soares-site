@@ -1,0 +1,86 @@
+/* Hero — primeira impressão: uma ideia, muito espaço, tipografia grande */
+
+.hero {
+  min-height: calc(100svh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-section-sm);
+  background:
+    radial-gradient(circle at 12% 18%, var(--color-gold-faint), transparent 45%),
+    var(--color-white);
+}
+
+.hero__grid {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--space-lg);
+  }
+}
+
+.hero__content {
+  max-width: 620px;
+}
+
+.hero h1 {
+  margin-bottom: var(--space-md);
+}
+
+.hero__lead {
+  margin-bottom: var(--space-lg);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-ink-faint);
+}
+
+.hero__scroll-hint svg {
+  width: 16px;
+  height: 16px;
+  animation: hero-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-hint svg {
+    animation: none;
+  }
+}
+
+.hero__media {
+  position: relative;
+}
+
+.hero__media .media-frame {
+  aspect-ratio: 4 / 5;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+@media (max-width: 899px) {
+  .hero__media .media-frame {
+    max-width: 360px;
+  }
+}

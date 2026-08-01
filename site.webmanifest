@@ -1,0 +1,17 @@
+{
+  "name": "Igor Soares Advogado",
+  "short_name": "Igor Soares",
+  "description": "Advogado trabalhista com atendimento direto e pessoal.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

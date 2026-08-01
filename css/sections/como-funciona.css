@@ -1,0 +1,76 @@
+/* Como Funciona — linha do tempo: reduz a ansiedade de "o que acontece depois" */
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+  counter-reset: step;
+}
+
+@media (min-width: 900px) {
+  .timeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 6%;
+    right: 6%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-border) 90%);
+  }
+}
+
+.timeline__step {
+  position: relative;
+  padding-top: var(--space-lg);
+}
+
+.timeline__index {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-wine);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1px solid var(--color-gold-soft);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 900px) {
+  .timeline__index {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline__step {
+    text-align: center;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}
+
+.timeline__step h3 {
+  margin-bottom: var(--space-2xs);
+}
+
+.timeline__step p {
+  color: var(--color-ink-faint);
+  font-size: var(--fs-small);
+}
+
+@media (min-width: 900px) {
+  .timeline__step p {
+    margin-inline: auto;
+  }
+}

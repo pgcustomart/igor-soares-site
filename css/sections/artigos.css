@@ -1,0 +1,39 @@
+/*
+  Artigos — vitrine editorial preparada para crescer (ver roadmap Fase 5+).
+  Site é one-page sem páginas internas: os cards não linkam para lugar
+  nenhum ainda, por isso trazem um selo "Em breve" em vez de um CTA morto.
+*/
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.article-card .media-frame {
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--space-md);
+}
+
+.article-card__tag {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.article-card__tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-right: var(--space-2xs);
+  align-self: center;
+}

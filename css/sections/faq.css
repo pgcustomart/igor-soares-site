@@ -1,0 +1,11 @@
+/* Perguntas Frequentes — reduz objeções antes da decisão de contato */
+
+.faq__layout {
+  max-width: var(--content-narrow);
+  margin-inline: auto;
+}
+
+.faq .section-heading {
+  margin-inline: auto;
+  text-align: center;
+}

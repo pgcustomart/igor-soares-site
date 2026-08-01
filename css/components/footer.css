@@ -1,0 +1,79 @@
+/* Footer — encerramento sóbrio, com filete dourado como assinatura de marca */
+
+.site-footer {
+  background: var(--color-ink);
+  color: rgba(255, 255, 255, 0.65);
+  padding-block: var(--space-xl) var(--space-lg);
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold) 0%, transparent 70%);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.footer-brand__logo {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-white);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-brand p {
+  max-width: 32ch;
+  font-size: var(--fs-small);
+}
+
+.footer-col h4 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer-col a {
+  font-size: var(--fs-small);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.footer-col a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}

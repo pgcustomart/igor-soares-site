@@ -1,0 +1,134 @@
+/*
+  Mapa — seção premium de localização. O mapa nunca aparece sozinho:
+  ele é composto com um card de endereço/horário/ações que se sobrepõe
+  sutilmente à imagem, criando uma composição editorial (não um iframe cru).
+*/
+
+.mapa__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 900px) {
+  .mapa__layout {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 0;
+  }
+}
+
+.mapa__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  min-height: 380px;
+  background: var(--color-gray-light);
+}
+
+.mapa__frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 0;
+  filter: grayscale(1) contrast(1.05) brightness(1.01);
+  transition: filter var(--duration-slow) var(--ease);
+}
+
+.mapa__frame:hover iframe,
+.mapa__frame:focus-within iframe {
+  filter: none;
+}
+
+.mapa__frame-tag {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  pointer-events: none;
+}
+
+.mapa__frame-tag::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-wine);
+}
+
+.mapa__card {
+  position: relative;
+  z-index: 3;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-lg);
+  align-self: center;
+}
+
+@media (min-width: 900px) {
+  .mapa__card {
+    margin: var(--space-xl) 0 var(--space-xl) -64px;
+    max-width: 380px;
+  }
+}
+
+.mapa__card h3 {
+  margin-bottom: var(--space-md);
+}
+
+.mapa__card-row {
+  display: flex;
+  gap: var(--space-sm);
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mapa__card-row:last-of-type {
+  border-bottom: none;
+}
+
+.mapa__card-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-wine);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mapa__card-row strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  margin-bottom: 0.2rem;
+}
+
+.mapa__card-row p {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.mapa__card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.mapa__card-actions .btn {
+  justify-content: center;
+}

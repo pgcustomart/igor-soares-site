@@ -1,0 +1,41 @@
+/* Contato — um único caminho principal (WhatsApp), sem formulário longo */
+
+.contato__box {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contato__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.contato__alt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+  font-size: var(--fs-small);
+}
+
+.contato__alt a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--color-ink-soft);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.contato__alt a:hover {
+  color: var(--color-wine);
+}
+
+.contato__alt svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gold);
+}

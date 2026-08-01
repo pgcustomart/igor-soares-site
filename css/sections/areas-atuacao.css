@@ -1,0 +1,13 @@
+/* Áreas de Atuação — cards temáticos de segmentação por situação */
+
+.areas__footer {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.areas__footer p {
+  margin-inline: auto;
+  margin-bottom: var(--space-sm);
+  max-width: 52ch;
+  color: var(--color-ink-faint);
+}
