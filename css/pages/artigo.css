@@ -1,0 +1,339 @@
+/*
+  Página de artigo individual (/artigos/<slug>/). Reaproveita tokens de
+  variables.css e componentes existentes (.card, .article-card, .faq-item,
+  .btn) — este arquivo cobre apenas o que é específico da página de artigo:
+  breadcrumb, cabeçalho (categoria/tempo de leitura/datas), índice lateral,
+  corpo do texto, card de autor, moldura de capa e o painel de CTA final.
+*/
+
+.artigo-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-small);
+  color: var(--color-ink-faint);
+  padding-block: var(--space-md);
+}
+
+.artigo-breadcrumb a {
+  color: var(--color-ink-faint);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.artigo-breadcrumb a:hover {
+  color: var(--color-wine);
+}
+
+.artigo-breadcrumb span[aria-current] {
+  color: var(--color-ink-soft);
+}
+
+.artigo-header {
+  max-width: var(--content-narrow);
+  margin-inline: auto;
+  text-align: center;
+  padding-bottom: var(--space-lg);
+}
+
+.artigo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs) var(--space-sm);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.artigo-meta__categoria {
+  color: var(--color-wine);
+}
+
+.artigo-meta__dot {
+  color: var(--color-border-strong);
+}
+
+.artigo-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  color: var(--color-ink-faint);
+  letter-spacing: var(--tracking-wide);
+}
+
+.artigo-meta__item svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-gold);
+}
+
+.artigo-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.artigo-dates {
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-md);
+}
+
+.artigo-dates time {
+  color: var(--color-ink-soft);
+}
+
+.artigo-header .lead {
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* ---- Layout com índice lateral ---- */
+
+.artigo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 1100px) {
+  .artigo-layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+}
+
+.artigo-toc {
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-md);
+}
+
+@media (min-width: 1100px) {
+  .artigo-toc {
+    position: sticky;
+    top: calc(var(--header-height-compact) + var(--space-lg));
+  }
+}
+
+.artigo-toc__label {
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-wine);
+  margin-bottom: var(--space-sm);
+}
+
+.artigo-toc ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.artigo-toc a {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--color-ink-faint);
+  line-height: 1.4;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.artigo-toc a:hover,
+.artigo-toc a:focus-visible {
+  color: var(--color-wine);
+}
+
+.artigo-main {
+  max-width: 66ch;
+  min-width: 0;
+}
+
+/* ---- Capa ---- */
+
+.artigo-main .artigo-cover {
+  margin: 0 0 var(--space-xl);
+}
+
+.artigo-cover .media-frame {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+}
+
+/* ---- Corpo do artigo ---- */
+
+.artigo-body h2 {
+  font-size: var(--fs-h3);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  scroll-margin-top: calc(var(--header-height-compact) + var(--space-md));
+}
+
+.artigo-body h3 {
+  font-size: 1.15rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xs);
+  scroll-margin-top: calc(var(--header-height-compact) + var(--space-md));
+}
+
+.artigo-body p {
+  max-width: none;
+  margin-bottom: var(--space-md);
+}
+
+.artigo-body ul,
+.artigo-body ol {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.3em;
+  color: var(--color-ink-soft);
+}
+
+.artigo-body li + li {
+  margin-top: var(--space-2xs);
+}
+
+.artigo-body li::marker {
+  color: var(--color-gold);
+}
+
+.artigo-body strong {
+  color: var(--color-ink);
+}
+
+/* ---- Card do autor ---- */
+
+.artigo-autor {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-gray-light);
+}
+
+.artigo-autor__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border-strong);
+}
+
+.artigo-autor__label {
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-wine);
+  margin-bottom: var(--space-3xs);
+}
+
+.artigo-autor__nome {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xs);
+}
+
+.artigo-autor__bio {
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  max-width: 55ch;
+  margin-bottom: var(--space-md);
+}
+
+.artigo-autor .btn {
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 640px) {
+  .artigo-autor {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---- FAQ do artigo ---- */
+
+.artigo-faq {
+  margin-top: var(--space-xl);
+}
+
+.artigo-faq h2 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-sm);
+}
+
+/* ---- CTA final ---- */
+
+.artigo-cta {
+  margin-top: var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-gray-light);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.artigo-cta h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.artigo-cta p {
+  max-width: 50ch;
+  margin-inline: auto;
+  color: var(--color-ink-soft);
+}
+
+.artigo-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+/* ---- Artigos relacionados ---- */
+
+.artigo-relacionados {
+  margin-top: var(--space-xl);
+}
+
+.artigo-relacionados .section-heading {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* ---- Placeholder de capa (padrão até a fotografia real ser produzida) ---- */
+
+.media-frame__monogram {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 3vw + 1rem, 4rem);
+  font-style: italic;
+  color: var(--color-gold-soft);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .artigo-header {
+    text-align: left;
+  }
+
+  .artigo-meta {
+    justify-content: flex-start;
+  }
+
+  .artigo-header .lead {
+    margin-inline: 0;
+  }
+
+  .artigo-cta {
+    padding: var(--space-lg) var(--space-md);
+  }
+}

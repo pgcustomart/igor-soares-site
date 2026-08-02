@@ -1,0 +1,23 @@
+/*
+  Hub /artigos/ — biblioteca jurídica completa. Reaproveita .card-grid e
+  .article-card (css/components/card.css, css/sections/artigos.css); este
+  arquivo cobre apenas o cabeçalho introdutório da página.
+*/
+
+.artigos-hub__intro {
+  max-width: var(--content-narrow);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.artigos-hub__intro .eyebrow {
+  justify-content: center;
+}
+
+.artigos-hub__intro .lead {
+  margin: var(--space-md) auto 0;
+}
+
+.artigos-hub__grid {
+  margin-top: var(--space-xl);
+}

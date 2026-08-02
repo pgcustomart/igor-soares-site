@@ -122,6 +122,27 @@
   color: var(--color-ink);
 }
 
+/*
+  Variante para páginas sem hero escuro no topo (ex.: /artigos/...), onde o
+  header não pode nascer transparente com texto branco. Reproduz o visual
+  de .is-scrolled já na carga da página; o scroll listener continua
+  funcionando por cima normalmente (troca de altura ao rolar).
+*/
+.site-header--solid {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.site-header--solid .site-header__wordmark {
+  color: var(--color-ink);
+}
+
+.site-header--solid .nav-toggle span {
+  background: var(--color-ink);
+}
+
 @media (min-width: 960px) {
   .site-header.is-scrolled .site-nav a {
     color: var(--color-ink-soft);
@@ -132,6 +153,18 @@
   }
 
   .site-header.is-scrolled .site-nav a:hover {
+    color: var(--color-ink);
+  }
+
+  .site-header--solid .site-nav a {
+    color: var(--color-ink-soft);
+  }
+
+  .site-header--solid .site-nav a::after {
+    background: var(--color-wine);
+  }
+
+  .site-header--solid .site-nav a:hover {
     color: var(--color-ink);
   }
 }

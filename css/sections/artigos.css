@@ -1,9 +1,7 @@
 /*
-  Artigos — vitrine editorial preparada para crescer (ver roadmap Fase 5+).
-  Os cards trazem um link "Ler artigo" com href="#" por decisão explícita do
-  cliente — as páginas de artigo ainda não existem (site é one-page); os
-  hrefs devem ser substituídos pelos links reais assim que as páginas forem
-  publicadas.
+  Artigos — vitrine editorial da home, com link para a biblioteca completa
+  em /artigos/. Estilos de .article-card também são reaproveitados no hub
+  (css/pages/artigos-hub.css) e no bloco de relacionados de cada artigo.
 */
 
 .article-card {
@@ -24,6 +22,25 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.article-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.article-card__meta svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-gold);
+  flex-shrink: 0;
 }
 
 .article-card__link {
@@ -54,4 +71,9 @@
 .article-card__link:hover::before,
 .article-card__link:focus-visible::before {
   margin-right: var(--space-xs);
+}
+
+.artigos__ver-todos {
+  text-align: center;
+  margin-top: var(--space-xl);
 }
