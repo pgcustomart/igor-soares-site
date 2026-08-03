@@ -8,7 +8,8 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  min-height: 100svh;
+  aspect-ratio: var(--hero-ratio, 16 / 9);
+  min-height: var(--hero-min-height, 480px);
   margin-top: calc(-1 * var(--header-height));
   color: var(--color-white);
 }
