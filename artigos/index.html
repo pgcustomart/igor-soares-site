@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="../css/components/footer.css">
 
   <!-- Sections / Pages -->
+  <link rel="stylesheet" href="../css/sections/hero.css">
   <link rel="stylesheet" href="../css/sections/artigos.css">
   <link rel="stylesheet" href="../css/pages/artigo.css">
   <link rel="stylesheet" href="../css/pages/artigos-hub.css">
@@ -66,7 +67,7 @@
   <div class="site-canvas">
 
     <!-- ===================== HEADER ===================== -->
-    <header class="site-header site-header--solid" id="site-header">
+    <header class="site-header" id="site-header">
       <div class="container site-header__inner">
         <a href="../index.html" class="site-header__logo">
           <img src="../assets/images/logo/logo-mark.svg" alt="" width="220" height="290" class="site-header__mark">
@@ -79,7 +80,7 @@
         <nav class="site-nav" aria-label="Navegação principal">
           <a href="../index.html#atuacao">Áreas de Atuação</a>
           <a href="../index.html#diferenciais">Diferenciais</a>
-          <a href="../index.html#artigos" aria-current="page">Artigos</a>
+          <a href="index.html" aria-current="page">Artigos</a>
         </nav>
 
         <a class="btn btn--primary site-header__cta js-whatsapp" href="#" data-wa-message="Olá, Dr. Igor. Encontrei a biblioteca de artigos do site e gostaria de falar sobre um processo trabalhista.">
@@ -97,12 +98,32 @@
       <ul>
         <li><a href="../index.html#atuacao">Áreas de Atuação</a></li>
         <li><a href="../index.html#diferenciais">Diferenciais</a></li>
-        <li><a href="../index.html#artigos">Artigos</a></li>
+        <li><a href="index.html">Artigos</a></li>
       </ul>
       <a class="btn btn--primary js-whatsapp" href="#" data-wa-message="Olá, Dr. Igor. Encontrei a biblioteca de artigos do site e gostaria de falar sobre um processo trabalhista.">Falar no WhatsApp</a>
     </nav>
 
     <main id="main">
+
+      <!-- ===================== HERO ===================== -->
+      <section class="hero" id="hero" aria-label="Abertura">
+        <div class="hero__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 899px)" srcset="../assets/images/hero/hero-artigos-mobile.webp">
+            <img src="../assets/images/hero/hero-artigos-desktop.webp" alt="" width="1918" height="820" loading="eager" fetchpriority="high">
+          </picture>
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content reveal">
+            <p class="eyebrow">Biblioteca Jurídica</p>
+            <h1 id="artigos-hub-heading">Artigos sobre Direito do Trabalho</h1>
+            <p class="lead hero__lead">Conteúdo escrito para esclarecer dúvidas reais de empregados e trabalhadores, com linguagem direta e informações juridicamente corretas.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" aria-labelledby="artigos-hub-heading">
         <div class="container">
           <p class="artigo-breadcrumb">
@@ -110,12 +131,6 @@
             <span aria-hidden="true">/</span>
             <span aria-current="page">Artigos</span>
           </p>
-
-          <div class="artigos-hub__intro">
-            <p class="eyebrow">Biblioteca Jurídica</p>
-            <h1 id="artigos-hub-heading">Artigos sobre Direito do Trabalho</h1>
-            <p class="lead">Conteúdo escrito para esclarecer dúvidas reais de empregados e trabalhadores, com linguagem direta e informações juridicamente corretas.</p>
-          </div>
 
           <div class="card-grid card-grid--3 artigos-hub__grid reveal-group">
             <article class="card article-card reveal" style="--reveal-index:0">
@@ -150,9 +165,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:0">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/horas-extras.webp" alt="Trabalhador em jornada estendida realizando horas extras no escritório" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>6 min de leitura</p>
               <h3>Horas extras: quando você tem direito e como são calculadas</h3>
@@ -162,9 +175,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:1">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/intervalo-de-almoco.webp" alt="Trabalhador fazendo a pausa do intervalo de almoço durante a jornada de trabalho" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>5 min de leitura</p>
               <h3>Intervalo de almoço é obrigatório? Entenda as regras</h3>
@@ -174,9 +185,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:2">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/demissao-durante-afastamento-medico.webp" alt="Trabalhador afastado por atestado médico durante o período de afastamento" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>6 min de leitura</p>
               <h3>Fui demitido durante afastamento médico. É permitido?</h3>
@@ -186,9 +195,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:0">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/gestante-pode-ser-demitida.webp" alt="Trabalhadora gestante no ambiente de trabalho" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>6 min de leitura</p>
               <h3>Gestante pode ser demitida? Conheça seus direitos</h3>
@@ -198,9 +205,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:1">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/acidente-de-trabalho.webp" alt="Trabalhador acidentado recebendo atendimento médico após acidente de trabalho" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>7 min de leitura</p>
               <h3>Acidente de trabalho: direitos e possíveis indenizações</h3>
@@ -210,9 +215,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:2">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/fgts-quando-posso-sacar.webp" alt="Trabalhador consultando o extrato do FGTS para conferir os depósitos" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>6 min de leitura</p>
               <h3>FGTS: quando posso sacar e quais são as regras principais</h3>
@@ -222,9 +225,7 @@
 
             <article class="card article-card reveal" style="--reveal-index:0">
               <div class="article-card__image">
-                <div class="media-frame">
-                  <span class="media-frame__monogram" aria-hidden="true">IS</span>
-                </div>
+                <img src="../assets/images/artigos/prazo-pagamento-rescisao.webp" alt="Trabalhador conferindo o prazo de pagamento das verbas rescisórias" loading="lazy">
               </div>
               <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg>5 min de leitura</p>
               <h3>Quanto tempo a empresa tem para pagar a rescisão?</h3>

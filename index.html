@@ -144,7 +144,7 @@
         <nav class="site-nav" aria-label="Navegação principal">
           <a href="#atuacao">Áreas de Atuação</a>
           <a href="#diferenciais">Diferenciais</a>
-          <a href="#artigos">Artigos</a>
+          <a href="artigos/">Artigos</a>
         </nav>
 
         <a class="btn btn--primary site-header__cta js-whatsapp" href="#" data-wa-message="Olá, Dr. Igor. Encontrei seu escritório pelo site e gostaria de falar sobre um processo trabalhista.">
@@ -162,7 +162,7 @@
       <ul>
         <li><a href="#atuacao">Áreas de Atuação</a></li>
         <li><a href="#diferenciais">Diferenciais</a></li>
-        <li><a href="#artigos">Artigos</a></li>
+        <li><a href="artigos/">Artigos</a></li>
       </ul>
       <a class="btn btn--primary js-whatsapp" href="#" data-wa-message="Olá, Dr. Igor. Encontrei seu escritório pelo site e gostaria de falar sobre um processo trabalhista.">Falar no WhatsApp</a>
     </nav>
@@ -172,7 +172,10 @@
       <!-- ===================== HERO ===================== -->
       <section class="hero" id="hero" aria-label="Abertura">
         <div class="hero__media" aria-hidden="true">
-          <img src="assets/images/hero/hero-1.webp" alt="" width="1536" height="1024" loading="eager" fetchpriority="high">
+          <picture>
+            <source media="(max-width: 899px)" srcset="assets/images/hero/hero-home-mobile.webp">
+            <img src="assets/images/hero/hero-home-desktop.webp" alt="" width="1824" height="862" loading="eager" fetchpriority="high">
+          </picture>
         </div>
         <div class="hero__scrim" aria-hidden="true"></div>
 
