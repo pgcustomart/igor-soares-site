@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Article {
+  id             String        @id @default(cuid())
+  slug           String        @unique
+  title          String
+  category       String        @default("")
+  excerpt        String        @default("")
+  coverImage     String        @default("")
+  coverImageAlt  String        @default("")
+  readingTimeMin Int           @default(5)
+  bodyHtml       String        @db.Text
+  status         ArticleStatus @default(DRAFT)
+  publishedAt    DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  seoTitle       String        @default("")
+  seoDescription String        @default("")
+  canonicalUrl   String        @default("")
+  robots         String        @default("index, follow")
+  ogImage        String        @default("")
+
+  ctaTitle       String        @default("")
+  ctaText        String        @default("")
+
+  faqs           ArticleFaq[]
+  relatedFrom    ArticleRelated[] @relation("ArticleRelatedFrom")
+  relatedTo      ArticleRelated[] @relation("ArticleRelatedTo")
+
+  @@index([status])
+}
+
+model ArticleFaq {
+  id        String  @id @default(cuid())
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  question  String
+  answer    String  @db.Text
+  order     Int     @default(0)
+}
+
+model ArticleRelated {
+  id               String  @id @default(cuid())
+  articleId        String
+  article          Article @relation("ArticleRelatedFrom", fields: [articleId], references: [id], onDelete: Cascade)
+  relatedArticleId String
+  relatedArticle   Article @relation("ArticleRelatedTo", fields: [relatedArticleId], references: [id], onDelete: Cascade)
+  order            Int     @default(0)
+
+  @@unique([articleId, relatedArticleId])
+}
+
+model Image {
+  id        String   @id @default(cuid())
+  filename  String
+  url       String
+  variant   String   @default("")
+  altText   String   @default("")
+  width     Int?
+  height    Int?
+  sizeBytes Int?
+  folder    String   @default("general")
+  createdAt DateTime @default(now())
+
+  @@index([folder])
+}
+
+model SiteSettings {
+  id                Int      @id @default(1)
+  phone             String   @default("")
+  whatsapp          String   @default("")
+  email             String   @default("")
+  address           String   @default("")
+  addressComplement String   @default("")
+  hours             String   @default("")
+  instagram         String   @default("")
+  linkedin          String   @default("")
+  googleMapsUrl     String   @default("")
+  oab               String   @default("")
+  updatedAt         DateTime @updatedAt
+}
+
+model HomeHero {
+  id              Int      @id @default(1)
+  title           String   @default("")
+  subtitle        String   @default("")
+  desktopImage    String   @default("")
+  mobileImage     String   @default("")
+  whatsappLabel   String   @default("Falar no WhatsApp")
+  whatsappMessage String   @default("")
+  scheduleLabel   String   @default("Agendar consulta")
+  scheduleMessage String   @default("")
+  updatedAt       DateTime @updatedAt
+}
+
+model ArticlesHero {
+  id           Int      @id @default(1)
+  title        String   @default("")
+  description  String   @default("")
+  desktopImage String   @default("")
+  mobileImage  String   @default("")
+  updatedAt    DateTime @updatedAt
+}
+
+model SeoSettings {
+  id                      Int      @id @default(1)
+  homeTitle               String   @default("")
+  homeDescription         String   @default("")
+  homeOgImage             String   @default("")
+  articlesMetaTitle       String   @default("")
+  articlesMetaDescription String   @default("")
+  articlesCanonical       String   @default("")
+  articlesRobots          String   @default("index, follow")
+  updatedAt               DateTime @updatedAt
+}

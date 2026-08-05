@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/seo-meta', { title: seo.title, description: seo.description, canonical: seo.canonical, robots: seo.robots, ogType: 'article', ogImage: seo.ogImage }) %>
+
+  <!-- Base -->
+  <link rel="stylesheet" href="/css/base/reset.css">
+  <link rel="stylesheet" href="/css/base/variables.css">
+  <link rel="stylesheet" href="/css/base/typography.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="/css/components/button.css">
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/card.css">
+  <link rel="stylesheet" href="/css/components/faq-accordion.css">
+  <link rel="stylesheet" href="/css/components/whatsapp-float.css">
+  <link rel="stylesheet" href="/css/components/footer.css">
+
+  <!-- Sections / Pages -->
+  <link rel="stylesheet" href="/css/sections/artigos.css">
+  <link rel="stylesheet" href="/css/pages/artigo.css">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json"><%- JSON.stringify(articleJsonLd) %></script>
+  <% if (article.faqs.length) { %><script type="application/ld+json"><%- JSON.stringify(faqJsonLd) %></script><% } %>
+  <script type="application/ld+json"><%- JSON.stringify(breadcrumbJsonLd) %></script>
+</head>
+<body data-whatsapp="<%= settings.whatsapp %>">
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <div class="site-canvas">
+
+    <%- include('../partials/header', { currentPage: 'artigo', solid: true, headerMessage: waMessage }) %>
+
+    <main id="main">
+      <article class="section section--sm">
+        <div class="container">
+          <p class="artigo-breadcrumb">
+            <a href="/">Início</a>
+            <span aria-hidden="true">/</span>
+            <a href="/artigos/">Artigos</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page"><%= article.title %></span>
+          </p>
+
+          <header class="artigo-header">
+            <p class="artigo-meta">
+              <span class="artigo-meta__categoria"><%= article.category %></span>
+              <span class="artigo-meta__dot">·</span>
+              <span class="artigo-meta__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg><%= article.readingTimeMin %> min de leitura</span>
+            </p>
+            <h1><%= article.title %></h1>
+            <p class="artigo-dates">Publicado em <time datetime="<%= publishedIso %>"><%= publishedDisplay %></time><% if (updatedDisplay) { %> · Atualizado em <time datetime="<%= updatedIso %>"><%= updatedDisplay %></time><% } %></p>
+            <p class="lead"><%= article.excerpt %></p>
+          </header>
+
+          <div class="artigo-layout">
+            <% if (headings.length) { %>
+            <nav class="artigo-toc" aria-label="Índice do artigo">
+              <p class="artigo-toc__label">Neste artigo</p>
+              <ol>
+                <% headings.forEach(function(h) { %>
+                <li><a href="#<%= h.id %>"><%= h.text %></a></li>
+                <% }) %>
+              </ol>
+            </nav>
+            <% } %>
+
+            <div class="artigo-main">
+              <% if (article.coverImage) { %>
+              <div class="artigo-cover">
+                <img src="<%= article.coverImage %>" alt="<%= article.coverImageAlt %>" width="1536" height="864" loading="eager" fetchpriority="high">
+              </div>
+              <% } %>
+
+              <div class="artigo-body">
+                <%- article.bodyHtml %>
+              </div>
+
+              <div class="artigo-autor">
+                <img src="/assets/images/sobre/igor-soares.jpg" alt="" class="artigo-autor__photo" width="64" height="64" loading="lazy">
+                <div>
+                  <p class="artigo-autor__label">Escrito por</p>
+                  <p class="artigo-autor__nome">Igor Soares</p>
+                  <p class="artigo-autor__bio">Advogado com mais de dez anos dedicados exclusivamente ao Direito do Trabalho. Acompanha pessoalmente cada processo, do primeiro contato até a solução do caso.</p>
+                  <a class="btn btn--outline js-whatsapp" href="#" data-wa-message="<%= waMessage %>">Falar no WhatsApp</a>
+                </div>
+              </div>
+
+              <% if (article.faqs.length) { %>
+              <div class="artigo-faq">
+                <h2>Perguntas frequentes</h2>
+                <div class="faq-list" id="faq-list">
+                  <% article.faqs.forEach(function(faq) { %>
+                  <div class="faq-item" data-open="false">
+                    <h3>
+                      <button class="faq-item__trigger" aria-expanded="false">
+                        <%= faq.question %>
+                        <span class="faq-item__icon" aria-hidden="true"></span>
+                      </button>
+                    </h3>
+                    <div class="faq-item__panel">
+                      <div class="faq-item__panel-inner">
+                        <p><%= faq.answer %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% }) %>
+                </div>
+              </div>
+              <% } %>
+
+              <% if (article.ctaTitle) { %>
+              <div class="artigo-cta">
+                <h2><%= article.ctaTitle %></h2>
+                <p><%= article.ctaText %></p>
+                <div class="artigo-cta__actions">
+                  <a class="btn btn--primary btn--lg js-whatsapp" href="#" data-wa-message="<%= waScheduleMessage %>">Agendar consulta</a>
+                  <a class="btn btn--outline btn--lg js-whatsapp" href="#" data-wa-message="<%= waMessage %>">Falar no WhatsApp</a>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+
+          <% if (article.related.length) { %>
+          <div class="artigo-relacionados">
+            <div class="section-heading">
+              <p class="eyebrow">Continue lendo</p>
+              <h2>Artigos relacionados</h2>
+            </div>
+            <div class="card-grid card-grid--3 reveal-group">
+              <% article.related.forEach(function(rel, i) { %>
+              <article class="card article-card reveal" style="--reveal-index:<%= i %>">
+                <div class="article-card__image">
+                  <img src="<%= rel.coverImage %>" alt="<%= rel.coverImageAlt %>" loading="lazy">
+                </div>
+                <p class="article-card__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></svg><%= rel.readingTimeMin %> min de leitura</p>
+                <h3><%= rel.title %></h3>
+                <p><%= rel.excerpt %></p>
+                <a class="article-card__link" href="/artigos/<%= rel.slug %>/">Ler artigo</a>
+              </article>
+              <% }) %>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </article>
+    </main>
+
+    <%- include('../partials/footer', { settings: settings }) %>
+
+  </div>
+
+  <%- include('../partials/scripts', { includeFaqAccordion: true }) %>
+</body>
+</html>
