@@ -1,42 +1,48 @@
-# Igor Soares Advogado — Site Institucional
+# Igor Soares Advogado — Site Institucional + Painel Administrativo
 
-Site institucional one-page para Igor Soares, advogado trabalhista. Produto de portfólio, tratado como projeto profissional premium.
+Site institucional one-page para Igor Soares, advogado trabalhista, com painel administrativo próprio (sem CMS/WordPress). Produto de portfólio, tratado como projeto profissional premium.
 
 **Domínio:** igorsoares.adv.br
-**Status:** Fase 1 concluída (estrutura visual completa da Home). Aguardando dados reais do cliente e refinamentos. Ver `docs/01-status-projeto.md` para o checkpoint detalhado.
+**Status:** Fase 1 (visual) e Fase 2 (banco de dados + painel administrativo) concluídas. Ver `docs/01-status-projeto.md` (histórico) e `docs/03-painel-administrativo.md` (arquitetura do painel) para o checkpoint detalhado.
 
 ## Stack
 
-HTML5, CSS3 e JavaScript puro — sem frameworks (sem Bootstrap, Tailwind ou jQuery) e sem build tooling. Fontes via Google Fonts: Cormorant Garamond (títulos) + Inter (corpo/UI).
+- **Site público (camada visual):** HTML5, CSS3 e JavaScript puro — sem frameworks front-end. Fontes via Google Fonts: Cormorant Garamond (títulos) + Inter (corpo/UI).
+- **Servidor + painel administrativo:** Node.js/Express + PostgreSQL (Railway) via Prisma, páginas públicas renderizadas no servidor (EJS) a partir do banco, e um painel em React + Vite servido em `/admin`. Detalhes completos em `docs/03-painel-administrativo.md`.
 
-## Como visualizar localmente
-
-Não há build step. Como o site usa `fetch`/JS de módulos carregados por `<script src>`, o ideal é servir por HTTP (abrir `index.html` direto por `file://` funciona, mas alguns navegadores/extensões bloqueiam certos recursos nesse modo). Qualquer servidor estático resolve, por exemplo:
+## Como rodar localmente
 
 ```bash
-npx http-server -p 8080 -c-1 .
-# depois abra http://localhost:8080/index.html
+# Servidor (API + site público + host do painel admin)
+cd server
+cp .env.example .env      # preencher DATABASE_URL, JWT_SECRET etc.
+npm install
+npx prisma migrate deploy
+npm run dev                # http://localhost:8080
+
+# Painel administrativo (dev com hot reload, opcional)
+cd admin-app
+npm install
+npm run dev                 # http://localhost:5173 (proxy para a API em :8080)
 ```
+
+Build de produção (raiz do repositório): `npm run build` (builda o admin e prepara o server) seguido de `npm start` (roda as migrations pendentes e sobe o servidor). Ver `railway.json`.
 
 ## Documentação do projeto
 
 - `docs/00-arquitetura-e-estrategia.md` — briefing completo: diagnóstico de mercado, análise da referência, conceito visual/marca, wireframes, estratégia de SEO e conversão, roadmap de fases. **Leia antes de tomar decisões de estrutura ou copy.**
-- `docs/01-status-projeto.md` — checkpoint do que foi feito, o que é placeholder, e pendências para retomar o trabalho.
+- `docs/01-status-projeto.md` — checkpoint histórico da Fase 1 (visual).
+- `docs/03-painel-administrativo.md` — arquitetura do banco de dados e do painel administrativo (Fase 2). **Leia antes de mexer em `server/` ou `admin-app/`.**
 - `CLAUDE.md` — guia técnico para trabalhar no código (convenções, estrutura de pastas, decisões de arquitetura).
 
 ## Estrutura do projeto
 
 ```
-index.html
-css/base/        (reset, design tokens, tipografia)
-css/components/  (header, button, card, faq-accordion, whatsapp-float, footer)
-css/sections/    (um arquivo por seção da Home)
-css/main.css     (shell de apresentação + utilitários globais)
-js/components/   (header-scroll, faq-accordion, reveal-on-scroll, whatsapp-links, smooth-scroll)
-js/main.js
-assets/          (images, fonts, favicon)
-docs/            (documentação estratégica e de status)
-sitemap.xml, robots.txt, site.webmanifest
+css/, js/, assets/        (design system e componentes vanilla — inalterados desde a Fase 1)
+server/                    (Express: API, SSR das páginas públicas, host do painel admin, Prisma)
+admin-app/                 (React + Vite: código-fonte do painel administrativo)
+docs/                      (documentação estratégica e de status)
+robots.txt, site.webmanifest
 ```
 
 ## Particularidade de layout: canvas de apresentação
@@ -45,4 +51,4 @@ Acima de 1024px de largura, o site é renderizado dentro de um "artboard" branco
 
 ## Dados pendentes antes do lançamento
 
-Telefone/WhatsApp, e-mail, número da OAB, complemento do endereço, fotografia profissional, depoimentos e tagline ainda são placeholders. Lista completa em `docs/01-status-projeto.md`.
+Número da OAB confirmado e alguns dados de contato ainda são placeholders — mas agora são editáveis diretamente pelo cliente em `/admin` → Configurações, sem precisar de deploy de código.

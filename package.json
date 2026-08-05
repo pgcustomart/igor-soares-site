@@ -1,0 +1,13 @@
+{
+  "name": "igor-soares-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deploy orchestration for the Igor Soares Advogado site (SSR public site + API + admin panel).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "npm install --prefix admin-app && npm run build --prefix admin-app && npm install --prefix server && npm run prisma:generate --prefix server",
+    "start": "npm run prisma:migrate --prefix server && npm start --prefix server"
+  }
+}

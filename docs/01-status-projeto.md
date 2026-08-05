@@ -1,6 +1,8 @@
 # Status do Projeto — Checkpoint 2026-07-31
 
 > Ponto de retomada. Leia este arquivo inteiro antes de continuar o desenvolvimento.
+>
+> **Atualização 2026-08-05:** este checkpoint documenta a Fase 1 (site estático). Desde então, o projeto ganhou banco de dados (PostgreSQL/Railway) e um painel administrativo próprio em `/admin` — o site público deixou de ser HTML estático e passou a ser renderizado no servidor a partir do banco, com o mesmo design. Ver `docs/03-painel-administrativo.md` para a arquitetura atual antes de continuar qualquer trabalho.
 
 ---
 
